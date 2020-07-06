@@ -13,9 +13,9 @@
 	// REGISTER USER
 	if (isset($_POST['reg_user'])) {
 		// receive all input values from the form
-		if(!preg_match('/^[a-zA-Z0-9]{5,}$/', $username)) { // for english chars + numbers only
-			array_push($errors, "username is not valid");
-		}
+		// if(!preg_match('/^[a-zA-Z0-9]{5,}$/', $username)) { // for english chars + numbers only
+		// 	array_push($errors, "username is not valid");
+		// }
 		$username = mysqli_real_escape_string($db, $_POST['username']);
 		$email = mysqli_real_escape_string($db, $_POST['email']);
 		if (!filter_var($email, FILTER_SANITIZE_EMAIL)) { array_push($errors, "Email in not valid") ;}
