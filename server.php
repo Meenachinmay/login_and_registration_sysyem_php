@@ -16,17 +16,19 @@
 		// if(!preg_match('/^[a-zA-Z0-9]{5,}$/', $username)) { // for english chars + numbers only
 		// 	array_push($errors, "username is not valid");
 		// }
-		$username = mysqli_real_escape_string($db, $_POST['username']);
-		$email = mysqli_real_escape_string($db, $_POST['email']);
-		if (!filter_var($email, FILTER_SANITIZE_EMAIL)) { array_push($errors, "Email in not valid") ;}
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { array_push($errors, "Email is not valid, please enter a valid email"); }
-		$password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
-		$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
-
 		// form validation: ensure that the form is correctly filled
 		if (empty($username)) { array_push($errors, "Username is required"); }
 		if (empty($email)) { array_push($errors, "Email is required"); }
 		if (empty($password_1)) { array_push($errors, "Password is required"); }
+		
+		$username = mysqli_real_escape_string($db, $_POST['username']);
+		
+		$email = mysqli_real_escape_string($db, $_POST['email']);
+		if (!filter_var($email, FILTER_SANITIZE_EMAIL)) { array_push($errors, "Email in not valid") ;}
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { array_push($errors, "Email is not valid, please enter a valid email"); }
+		
+		$password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
+		$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
 		if ($password_1 != $password_2) {
 			array_push($errors, "The two passwords do not match");
