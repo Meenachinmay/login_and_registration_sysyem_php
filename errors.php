@@ -1,6 +1,6 @@
-<?php  if (count($errors) > 0) : ?>
+<?php  if (count($validation_errors) > 0) : ?>
 	<div class="alert alert-danger" role="alert">
-		<?php foreach ($errors as $error) : ?>
+		<?php foreach ($validation_errors as $error) : ?>
 			<p><?php echo $error ?></p>
 		<?php endforeach ?>
 	</div>
